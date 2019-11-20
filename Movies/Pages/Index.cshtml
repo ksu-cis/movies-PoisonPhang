@@ -19,7 +19,7 @@
                         <h3>@movie.Rotten_Tomatoes_Rating</h3>
                     </div>
                     <div>
-                        IMdB
+                        IMDb
                         <h3>@movie.IMDB_Rating</h3>
                     </div>
                 </div>
@@ -28,30 +28,41 @@
     </div>
     <form method="post">
         <h4>Search</h4>
-        <input type="text" name="search" />
+        <input type="text" name="search" value="@Model.search"/>
         <input type="submit" value="Search and Filter" />
+        <input type="reset" value="Clear"/>
 
         <div class="checkbox-list">
             <h4>Filter By Rating</h4>
             <label>
-                <input type="checkbox" name="rating" value="G" />
+                <input type="checkbox" name="rating" value="G" checked="@Model.rating.Contains("G")"/>
                 Rated G
             </label>
             <label>
-                <input type="checkbox" name="rating" value="PG" />
+                <input type="checkbox" name="rating" value="PG" checked="@Model.rating.Contains("PG")"/>
                 Rated PG
             </label>
             <label>
-                <input type="checkbox" name="rating" value="PG-13" />
+                <input type="checkbox" name="rating" value="PG-13" checked="@Model.rating.Contains("PG-13")"/>
                 Rated PG-13
             </label>
             <label>
-                <input type="checkbox" name="rating" value="R" />
+                <input type="checkbox" name="rating" value="R" checked="@Model.rating.Contains("R")"/>
                 Rated R
             </label>
             <label>
-                <input type="checkbox" name="rating" value="NC-17" />
+                <input type="checkbox" name="rating" value="NC-17" checked="@Model.rating.Contains("NC-17")"/>
                 Rated NC-17
+            </label>
+
+            <h4>Review Scores</h4>
+            <label>
+                Minimum IMDb Rating:
+                <input type="number" min="0" max="10" step="0.1" name="minIMDb" value="@Model.minIMDb"/>
+            </label>
+            <label>
+                Max IMDb Rating:
+                <input type="number" min="0" max="10" step="0.1" name="maxIMDb" value="@Model.maxIMBd"/>
             </label>
         </div>
     </form>
